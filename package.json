@@ -1,0 +1,47 @@
+{
+  "name": "bones-app",
+  "version": "0.0.14",
+  "license": "MIT",
+  "scripts": {
+    "start": "concurrently \"npm run start:esdev\" \"npm run start:eleventy\" \"npm run start:editor\"",
+    "start:eleventy": "eleventy --watch",
+    "start:esdev": "es-dev-server --node-resolve --serve --preserve-symlinks --root-dir _site",
+    "start:esdevSPArouting": "es-dev-server --node-resolve --serve --preserve-symlinks --root-dir _site --app-index index.html",
+    "start:editor": "mvstudio --headless --format .",
+    "build": "HAXCMS_SERVICE_WORKER=true eleventy build && polymer build && rm -rf _site/node_modules _site/assets/js && mv build/es6/node_modules _site/ && mv build/es6/assets/js _site/assets/"
+  },
+  "devDependencies": {
+    "@haxcms/11ty": "^0.0.11",
+    "@11ty/eleventy-plugin-rss": "1.0.7",
+    "eleventy-xml-plugin": "0.1.0",
+    "@11ty/eleventy": "^0.11.1",
+    "crypto": "1.0.1",
+    "es-dev-server": "^1.47.0",
+    "concurrently": "^5.2.0",
+    "model-viewer-studio": "0.0.16",
+    "fs-extra": "^9.0.1"
+  },
+  "resolutions": {
+    "@lit/reactive-element": "1.6.3",
+    "lit-element": "3.3.3",
+    "lit-html": "2.8.0",
+    "lit": "2.8.0"
+  },
+  "dependencies": {
+    "@lit/reactive-element": "1.6.3",
+    "lit": "^2.8.0",
+    "lit-element": "3.3.3",
+    "lit-html":"2.8.0",
+    "@lrnwebcomponents/video-player": "^7.0.15",
+    "@lrnwebcomponents/scroll-button": "^7.0.15",
+    "@lrnwebcomponents/simple-popover":"^7.0.15",
+    "@lrnwebcomponents/intersection-element":"^7.0.4",
+    "@adobe/lit-mobx": "2.2.0",
+    "@google/model-viewer": "3.3.0",
+    "@vaadin/router": "^1.7.2",
+    "es-module-shims": "^0.4.6",
+    "gltf-pipeline": "^2.1.10",
+    "mobx": "^5.15.4",
+    "mvstudio-app": "0.0.15"
+  }
+}
